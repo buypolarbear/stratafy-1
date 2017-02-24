@@ -7,12 +7,14 @@ Stratafy is an online voting for condominium boards aka strata's. It was built t
 - Allow administrators to setup resolutions
 - Allow owners to vote on resolutions
 
+#installation
+`composer create-project --prefer-dist laravel/laravel stratafy`
+
 
 ## How Behat was installed
 
 ```
-composer create-project --prefer-dist laravel/laravel stratafy
-composer require --dev behat/behat behat/mink behat/mink-extension
+composer require --dev behat/behat behat/mink behat/mink-extension laracasts/behat-laravel-extension
 vendor/bin/behat --init
 ```
 

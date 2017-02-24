@@ -12,8 +12,8 @@ bootstrap/cache/*
 /vendor
 /node_modules
 .env
-.env.behat
 .env.swp
 *.swp
 .DS_Store
-storage/exports
+/storage/exports
+/database/sqlite.db

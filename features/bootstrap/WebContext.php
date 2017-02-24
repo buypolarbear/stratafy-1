@@ -77,4 +77,16 @@ class WebContext extends MinkContext implements Context
     {
         $this->assertPageNotContainsText($this->data['resolution']->description);
     }
+
+    /**
+     * @Then I can cast a yay vote on :arg1
+     */
+    public function iCanCastAYayVoteOn($arg1)
+    {
+        $this->clickLink($this->data['resolution']->description);
+        $this->fillField('vote', 'yay');
+        $this->pressButton('submit');
+        $this->assertFieldContains('vote', 'yay');
+    }
+
 }

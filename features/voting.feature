@@ -17,3 +17,10 @@ Feature: Owner voting
         And I am the owner for unit "909" which is not part of the "Fix garbage room" resolution
         When I query the stratafy homepage
         Then I should not be able to vote on "Fix garbage room"
+
+    @important
+    Scenario: Cast a vote
+        Given I am the owner of unit "707"
+        And there is a resolution for "Fix front door"
+        When I query the stratafy homepage
+        Then I can cast a yay vote on "Fix front door"
