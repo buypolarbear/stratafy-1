@@ -73,6 +73,11 @@
                 <div class="title m-b-md">
                     Resolutions
                 </div>
+                <form method="GET">
+                    Begins with: <input type="text" name="starts">
+                    After: <input type="text" name="after">
+                    submit: <input type="submit">
+                </form>
 
                 <table border="1" cellpadding="0" cellspacing="0" width="100%">
                     <tr><th>Description</th><th>Expiration</th><th>Status</th><th>&nbsp;</th></tr>

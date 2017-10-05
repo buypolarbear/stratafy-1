@@ -11,7 +11,9 @@ class Owner extends Model
         if (Owner::where(['unit' => $unit])->exists()) {
             throw new \Exception('Owner already exist at unit "'.$unit.'"');
         }
-        return Owner::create(['unit' => $unit, 'name' => $name]);
+        $owner = Owner::create(['unit' => $unit, 'name' => $name]);
+        event(new \App\Events\OwnerWasCreated($owner));
+        return $owner;
     }
 
     public function resolutions() {

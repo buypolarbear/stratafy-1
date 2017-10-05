@@ -44,4 +44,14 @@ class Resolution extends Model
 
         return $this->load('owners');
     }
+
+    public function startsWith(string $start)
+    {
+        return starts_with($this->description, $start);
+    }
+
+    public function after(Carbon $after)
+    {
+        return $this->expire_at->gt($after);
+    }
 }

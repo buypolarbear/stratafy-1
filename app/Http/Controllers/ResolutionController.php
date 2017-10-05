@@ -14,10 +14,24 @@ class ResolutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('resolutions', ['resolutions' => Resolution::all()]);
+        $starts = $request->input('starts');
+        $after = $request->input('after');
+        $resolutions = Resolution::all()->when($starts, function ($r) use ($starts) {
+            return $r->filter(function ($res) use ($starts) {
+                return starts_with($res->description, $starts);
+            });
+        })->when($after, function ($r) use ($after) {
+            return $r->filter(function ($res) use ($after) {
+                return $res->expire_at > $after;
+            });
+        });
+
+        return view('resolutions', ['resolutions' => $resolutions]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -106,5 +120,4 @@ class ResolutionController extends Controller
         $resolution->save();
         return redirect('/resolutions');
     }
-
 }
